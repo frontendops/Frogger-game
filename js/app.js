@@ -33,8 +33,8 @@ Enemy.prototype.render = function() {
 // Place the player object in a variable called player
 
 let Player = function() {
-    this.x = 0;
-    this.y = 0;
+    this.x = 205;
+    this.y = 405;
     this.speed = 50;
     this.sprite = 'images/char-horn-girl.png';
 };
@@ -43,21 +43,33 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function (direction) {
+Player.prototype.handleInput = function(direction) {
     switch (direction) {
         case 'left':
+        if (this.x > 20) {
             this.x -= 100;
-            break;
-        case 'up':
-            this.y -= 100;
-            break;
+        }
+        break;
+
         case 'right':
+        if (this.x  < 405) {
             this.x += 100;
-            break;
+        }
+        break;
+
+        case 'up':
+        if (this.y > 20) {
+            this.y -= 80;
+        }
+        break;
+
         case 'down':
-            this.y += 100;
-            break;
+        if (this.y  < 400) {
+            this.y += 80;
+        }
+        break;
     }
+
 };
 
 let player = new Player();
