@@ -28,9 +28,9 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 //each enemy and its parameters
-let enemy = new Enemy(-110,60,60);
-let enemy2 = new Enemy(-110,140,50);
-let enemy3 = new Enemy(-110,220,50);
+let enemy = new Enemy(-110,73,60);
+let enemy2 = new Enemy(-110,156,50);
+let enemy3 = new Enemy(-110,239,50);
 
 
 allEnemies.push(enemy,enemy2,enemy3);
@@ -79,15 +79,22 @@ Player.prototype.handleInput = function(direction) {
 
 let player = new Player();
 
-//if player crosses lake 
+//if player crosses lake
 Player.prototype.update = function() {
-
+//if game is won run this function
     setTimeout(function() {
         if (this.y <= 30) {
             this.x = 205;
             this.y = 405;
         }
     }.bind(this), 2500);
+
+//if enemy hits player run This
+for (let enemy of allEnemies) {
+    if (enemy.y === this.y) {
+        console.log('it works');
+    }
+}
 
 };
 
