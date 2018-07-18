@@ -15,7 +15,7 @@ var Enemy = function(x, y, speed) {
 //else reset postion back to start
 Enemy.prototype.update = function(dt) {
 
-    if (this.x < 400) {
+    if (this.x < 510) {
         this.x += this.speed * dt;
     } else {
         this.x = -110;
@@ -78,6 +78,18 @@ Player.prototype.handleInput = function(direction) {
 };
 
 let player = new Player();
+
+//if player crosses lake 
+Player.prototype.update = function() {
+
+    setTimeout(function() {
+        if (this.y <= 30) {
+            this.x = 205;
+            this.y = 405;
+        }
+    }.bind(this), 2500);
+
+};
 
 
 
