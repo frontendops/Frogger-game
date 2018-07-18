@@ -1,8 +1,8 @@
+//array holding all enemies
 var allEnemies = [];
 
-// Enemies our player must avoid
+// Enemies our player must avoid with starting position and speed parameters
 var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -11,6 +11,8 @@ var Enemy = function(x, y, speed) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+//if the enemy is still in game board run at speed in parameters
+//else reset postion back to start
 Enemy.prototype.update = function(dt) {
 
     if (this.x < 400) {
@@ -25,7 +27,7 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
+//each enemy and its parameters
 let enemy = new Enemy(-110,60,60);
 let enemy2 = new Enemy(-110,140,50);
 let enemy3 = new Enemy(-110,220,50);
@@ -34,18 +36,18 @@ let enemy3 = new Enemy(-110,220,50);
 allEnemies.push(enemy,enemy2,enemy3);
 
 
-
+//player object
 let Player = function() {
     this.x = 205;
     this.y = 405;
     this.speed = 50;
     this.sprite = 'images/char-horn-girl.png';
 };
-
+//render player on board
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
+//function for directions inputs
 Player.prototype.handleInput = function(direction) {
     switch (direction) {
         case 'left':
