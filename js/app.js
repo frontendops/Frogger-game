@@ -31,9 +31,9 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 //each enemy and its parameters
-let enemy = new Enemy(-110,73,400);
-let enemy2 = new Enemy(-110,156,350);
-let enemy3 = new Enemy(-110,239,250);
+let enemy = new Enemy(-110,73,480);
+let enemy2 = new Enemy(-110,156,400);
+let enemy3 = new Enemy(-110,239,310);
 
 
 allEnemies.push(enemy,enemy2,enemy3);
@@ -88,6 +88,9 @@ function roundWin () {
         if (player.y <= 30) {
             player.x = 205;
             player.y = 405;
+
+            score.push('10');
+            updateScore();
         }
     }, 2000);
 
@@ -109,6 +112,12 @@ roundWin();
 
 };
 
+//if the lake is reached add 10 to the score
+function updateScore() {
+    for (var i = 0; i < score.length; i++) {
+    $('.score').html(score.length * 10);
+    }
+};
 
 
 // This listens for key presses and sends the keys to your
