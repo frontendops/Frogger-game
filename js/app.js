@@ -1,10 +1,13 @@
 //array holding all enemies
 var allEnemies = [];
+var score = [];
 
 // Enemies our player must avoid with starting position and speed parameters
 var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
+    //hitbox of sprite
+    this.size = 70;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
 };
@@ -28,9 +31,9 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 //each enemy and its parameters
-let enemy = new Enemy(-110,73,60);
-let enemy2 = new Enemy(-110,156,50);
-let enemy3 = new Enemy(-110,239,50);
+let enemy = new Enemy(-110,73,400);
+let enemy2 = new Enemy(-110,156,350);
+let enemy3 = new Enemy(-110,239,250);
 
 
 allEnemies.push(enemy,enemy2,enemy3);
@@ -40,9 +43,12 @@ allEnemies.push(enemy,enemy2,enemy3);
 let Player = function() {
     this.x = 205;
     this.y = 405;
-    this.speed = 50;
+    this.size = 50;
     this.sprite = 'images/char-horn-girl.png';
 };
+
+let player = new Player();
+
 //render player on board
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -77,25 +83,29 @@ Player.prototype.handleInput = function(direction) {
 
 };
 
-let player = new Player();
+function roundWin () {
+    setTimeout(function() {
+        if (player.y <= 30) {
+            player.x = 205;
+            player.y = 405;
+        }
+    }, 2000);
 
-//if player crosses lake
+}
+
+
 Player.prototype.update = function() {
 //if game is won run this function
-    setTimeout(function() {
-        if (this.y <= 30) {
-            this.x = 205;
-            this.y = 405;
-        }
-    }.bind(this), 2500);
 
-//if enemy hits player run This
+//if enemy hits player restart player
 for (let enemy of allEnemies) {
-    if (enemy.y === this.y && (enemy.x + enemy.speed > this.x && enemy.x < this.x + this.speed)) {
+    if (enemy.y === this.y && (enemy.x + enemy.size > this.x && enemy.x < this.x + this.size)) {
         this.x = 205;
         this.y = 405;
     }
 }
+
+roundWin();
 
 };
 
