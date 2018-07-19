@@ -91,8 +91,9 @@ Player.prototype.update = function() {
 
 //if enemy hits player run This
 for (let enemy of allEnemies) {
-    if (enemy.y === this.y) {
-        console.log('it works');
+    if (enemy.y === this.y && (enemy.x + enemy.speed > this.x && enemy.x < this.x + this.speed)) {
+        this.x = 205;
+        this.y = 405;
     }
 }
 
