@@ -3,7 +3,7 @@ frontend-nanodegree-arcade-game
 
 Getting Started
 
--Open the index.html file in your browser of choice.
+-Open the index.html file in your browser of choice. When your browser is open select -> file -> open file. Or, just drag the file in the browser window.
 
 How to Play
 
