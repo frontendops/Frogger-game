@@ -135,4 +135,6 @@ document.addEventListener('keyup', function (e) {
 });
 
 
-//Functionality for changing our character
+//Functionality for changing our character in engine.js
+
+
