@@ -11,7 +11,7 @@ body {
 }
 .char-select div {
     margin: 15px;
-    height: 150px;
+    height: 200px;
     width: 100px;
 }
 
@@ -20,7 +20,7 @@ body {
 }
 
 .char-select .play-2 {
-    background-image: url('../images/char-cat-girl.png');
+    background-image: url('../images/char-princess-girl.png');
 }
 
 .char-select .play-3 {
@@ -28,5 +28,6 @@ body {
 }
 
 .chosen {
-    border: 1px solid black;
+    border: 3px solid black;
+    border-radius: 10px
 }

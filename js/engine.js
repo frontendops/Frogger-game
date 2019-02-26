@@ -174,7 +174,9 @@ var Engine = (function (global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/char-horn-girl.png'
+        'images/char-horn-girl.png',
+        'images/char-princess-girl.png'
+
     ]);
     Resources.onReady(init);
 
@@ -185,13 +187,29 @@ var Engine = (function (global) {
     global.ctx = ctx;
 
 
-
+    //fix this to change on chosen sprite
     window.onload = () => {
         const charSelect = document.querySelector('.char-select');
 
         charSelect.addEventListener("click", (e) => {
+            // e.target.classList.remove('chosen');
+            const nodes = e.target.parentNode.childNodes;
+
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].nodeName.toLowerCase() == 'div') {
+                    nodes[i].classList.remove('chosen');
+                }
+            }
+
+            if (e.target.classList.contains('play-1')) {
+                player.sprite = 'images/char-boy.png';
+            } else if (e.target.classList.contains('play-2')) {
+                player.sprite = 'images/char-princess-girl.png';
+            } else if (e.target.classList.contains('play-3')) {
+                player.sprite = "images/char-horn-girl.png"
+            }
+
             e.target.classList.add('chosen');
-            player.sprite = 'images/char-boy.png'
 
         });
     }
